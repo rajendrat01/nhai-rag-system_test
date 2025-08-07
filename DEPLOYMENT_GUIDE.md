@@ -23,7 +23,7 @@ Your repository is already ready with:
 
 In Streamlit Cloud, add this environment variable:
 - **Key**: `HUGGINGFACE_API_KEY`
-- **Value**: `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`
+- **Value**: `your_huggingface_api_key_here`
 
 ### Step 4: Deploy
 

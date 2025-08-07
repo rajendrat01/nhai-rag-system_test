@@ -8,7 +8,7 @@ import math
 import requests
 
 # HuggingFace API Configuration
-HUGGINGFACE_API_KEY = "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"
+HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "your_api_key_here")
 
 def load_all_documents():
     """Load all documents from the data directory"""

@@ -14,7 +14,7 @@ from collections import defaultdict, Counter
 import math
 
 # HuggingFace API Configuration
-HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "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")
+HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY", "your_api_key_here")
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models"
 
 class SimpleHuggingFaceRAG:
@@ -41,11 +41,11 @@ class SimpleHuggingFaceRAG:
                 
                 # Check for both possible field names
                 text = data.get('extracted_text') or data.get('text')
-                if text:
+                if text and len(text.strip()) > 50:  # Ensure minimum content
                     # Clean the text for better search
                     cleaned_text = self.clean_ocr_text(text)
                     
-                    if len(cleaned_text.strip()) > 10:  # Only load documents with meaningful content
+                    if len(cleaned_text.strip()) > 20:  # Only load documents with meaningful content
                         self.documents.append(cleaned_text)
                         self.metadata.append({
                             'filename': data.get('filename', ''),
@@ -66,12 +66,10 @@ class SimpleHuggingFaceRAG:
     
     def clean_ocr_text(self, text):
         """Clean up OCR text by removing garbled characters"""
-        # Remove problematic OCR artifacts more aggressively
+        # Less aggressive cleaning to preserve more content
         text = re.sub(r'[#@$%^&*()_+\-=\[\]{}|\\:";\'<>?,./`~]', ' ', text)
-        text = re.sub(r'[^\w\s\.\,\-\d]', ' ', text)  # Keep only alphanumeric, spaces, dots, commas, hyphens
         text = re.sub(r'\s+', ' ', text)  # Multiple spaces to single
-        text = re.sub(r'[A-Z]{2,}', ' ', text)  # Remove all caps words (likely OCR errors)
-        text = re.sub(r'\b[A-Z]{1,2}\b', ' ', text)  # Remove single/double letter caps
+        # Don't remove all caps words as they might be important (like NHAI, EC, etc.)
         return text.strip()
     
     def preprocess_text(self, text):
@@ -226,9 +224,9 @@ class SimpleHuggingFaceRAG:
 # Initialize RAG system
 def load_rag_system():
     rag = SimpleHuggingFaceRAG()
-    # Use absolute path
-    current_dir = Path(__file__).parent.parent
-    extracted_dir = current_dir / "output" / "extracted_texts"
+    # Use absolute path to data directory
+    current_dir = Path(__file__).parent
+    extracted_dir = current_dir / "data" / "extracted_texts"
     num_docs = rag.load_documents(str(extracted_dir))
     return rag, num_docs
 
