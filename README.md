@@ -1,4 +1,4 @@
-# NHAI Policy Circulars RAG System
+# Circulars RAG System
 
 AI-powered search and analysis system for NHAI (National Highways Authority of India) policy documents.
 
@@ -36,4 +36,5 @@ AI-powered search and analysis system for NHAI (National Highways Authority of I
 - "What are the land acquisition procedures?"
 - "How is toll collection managed?"
 - "What are the delegation of powers guidelines?"
+
 - "What are the environmental clearance requirements?" 
