@@ -1,0 +1,17 @@
+{
+  "processing_summary": {
+    "total_circulars": 2,
+    "successfully_processed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "success_rate": "0.0%"
+  },
+  "error_analysis": {},
+  "successful_policies": [],
+  "failed_policies": [],
+  "processing_timestamp": "2025-08-02T13:15:19.565685",
+  "ragflow_integration": {
+    "host": "http://localhost:80",
+    "client_version": "1.0.0"
+  }
+}

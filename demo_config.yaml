@@ -1,0 +1,102 @@
+# NHAI RAGFlow Demo Configuration
+# For demo using external models from the internet
+
+ragflow:
+  host: 0.0.0.0
+  http_port: 9380
+
+mysql:
+  name: 'rag_flow'
+  user: 'root'
+  password: 'infini_rag_flow'
+  host: 'localhost'
+  port: 5455
+  max_connections: 900
+  stale_timeout: 300
+  max_allowed_packet: 1073741824
+
+minio:
+  user: 'rag_flow'
+  password: 'infini_rag_flow'
+  host: 'localhost:9000'
+
+es:
+  hosts: 'http://localhost:1200'
+  username: 'elastic'
+  password: 'infini_rag_flow'
+
+redis:
+  db: 1
+  password: 'infini_rag_flow'
+  host: 'localhost:6379'
+
+# Demo LLM Configuration - Using Free Models
+user_default_llm:
+  factory: 'Ollama'  # Free local models
+  api_key: ''  # No API key needed for Ollama
+  base_url: 'http://localhost:11434'  # Ollama default port
+
+# Alternative: Use HuggingFace free models
+# user_default_llm:
+#   factory: 'HuggingFace'
+#   api_key: 'hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  # Get free token from huggingface.co
+#   base_url: 'https://api-inference.huggingface.co'
+
+# Alternative: Use OpenAI (if you have free credits)
+# user_default_llm:
+#   factory: 'OpenAI'
+#   api_key: 'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  # Your OpenAI API key
+#   base_url: 'https://api.openai.com/v1'
+
+# Alternative: Use Google Gemini (free tier)
+# user_default_llm:
+#   factory: 'Gemini'
+#   api_key: 'AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  # Your Google API key
+#   base_url: 'https://generativelanguage.googleapis.com'
+
+# Embedding Model Configuration
+embedding_model:
+  factory: 'HuggingFace'  # Free embeddings
+  model_name: 'sentence-transformers/all-MiniLM-L6-v2'  # Lightweight, fast
+  api_key: 'hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  # Get free token from huggingface.co
+
+# Alternative embedding models:
+# - 'BAAI/bge-small-en-v1.5'  # Good for English
+# - 'sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2'  # Multilingual
+# - 'intfloat/multilingual-e5-small'  # Good for multiple languages
+
+# Demo Settings
+demo_settings:
+  max_documents: 50  # Limit for demo
+  search_limit: 10
+  enable_ocr: true
+  enable_summarization: true
+  enable_qa: true
+  
+# NHAI Specific Settings
+nhai_integration:
+  analysis_config:
+    change_detection: true
+    compliance_checking: true
+    cross_reference_analysis: true
+    policy_summarization: true
+  document_types:
+    - policy_circular
+    - guidelines
+    - notifications
+  enabled: true
+  metadata_fields:
+    - policy_no
+    - subject
+    - date
+    - link_path
+    - full_url
+    - direct_pdf_url
+    - extracted_on
+  search_config:
+    default_limit: 10
+    filter_by_date: true
+    filter_by_policy_type: true
+    keyword_search: true
+    semantic_search: true
+  source: NHAI 
