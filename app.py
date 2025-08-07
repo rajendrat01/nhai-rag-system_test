@@ -14,7 +14,7 @@ from collections import defaultdict, Counter
 import math
 
 # HuggingFace API Configuration
-HUGGINGFACE_API_KEY = "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"
+HUGGINGFACE_API_KEY = "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"
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models"
 
 class SimpleHuggingFaceRAG:
