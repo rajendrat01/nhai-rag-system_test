@@ -1,88 +1,63 @@
-# 🚀 NHAI RAG System - Cloud Deployment Guide
+# NHAI RAG System - Streamlit Cloud Deployment Guide
 
-## 🌐 **Option 1: Streamlit Cloud (Recommended - 10 minutes)**
+## Quick Deployment to Streamlit Cloud
 
-### Step 1: Create GitHub Repository
-1. Go to [GitHub](https://github.com) and create a new repository
-2. Name it: `nhai-rag-system`
-3. Make it public
+### Step 1: Prepare Your Repository
+Your repository is already ready with:
+- ✅ `app.py` (main Streamlit application)
+- ✅ `requirements.txt` (dependencies)
+- ✅ `data/extracted_texts/` (1614+ extracted documents)
 
-### Step 2: Upload Files
-Upload these files to your GitHub repository:
-- `streamlit_app.py` (rename to `app.py`)
-- `requirements.txt`
+### Step 2: Deploy to Streamlit Cloud
 
-### Step 3: Deploy to Streamlit Cloud
-1. Go to [Streamlit Cloud](https://share.streamlit.io/)
-2. Sign in with GitHub
-3. Click "New app"
-4. Select your repository: `nhai-rag-system`
-5. Set main file path: `app.py`
-6. Click "Deploy"
+1. **Go to Streamlit Cloud**: https://share.streamlit.io/
+2. **Sign in with GitHub**
+3. **Click "New app"**
+4. **Configure your app**:
+   - **Repository**: `rajendrat01/nhai-rag-system_test`
+   - **Branch**: `master`
+   - **Main file path**: `app.py`
+   - **App URL**: Choose a custom URL (optional)
 
-**✅ Your app will be live at: `https://your-app-name.streamlit.app`**
+### Step 3: Set Environment Variables
 
----
+In Streamlit Cloud, add this environment variable:
+- **Key**: `HUGGINGFACE_API_KEY`
+- **Value**: `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`
 
-## ☁️ **Option 2: Heroku (Alternative)**
+### Step 4: Deploy
 
-### Step 1: Install Heroku CLI
-```bash
-# Download from: https://devcenter.heroku.com/articles/heroku-cli
-```
+Click **"Deploy"** and wait for the build to complete.
 
-### Step 2: Create Heroku App
-```bash
-heroku create nhai-rag-demo
-```
+## Your App Will Be Live At:
+`https://your-app-name.streamlit.app`
 
-### Step 3: Deploy
-```bash
-git add .
-git commit -m "Initial deployment"
-git push heroku main
-```
+## Features Available:
+- 🔍 **Smart Document Search**: TF-IDF based search
+- 🤖 **AI-Generated Answers**: Using HuggingFace models
+- 📊 **Relevance Scoring**: Intelligent document ranking
+- 🧹 **Clean OCR Text**: Processed document display
+- 📱 **Mobile-Friendly**: Works on all devices
 
----
+## Sample Queries:
+- "What are the land acquisition procedures?"
+- "How is toll collection managed?"
+- "What are the delegation of powers guidelines?"
+- "What are the environmental clearance requirements?"
 
-## 🔧 **Option 3: Railway (Easiest)**
+## Troubleshooting:
 
-1. Go to [Railway](https://railway.app/)
-2. Connect your GitHub account
-3. Create new project from GitHub
-4. Select your repository
-5. Deploy automatically
+### If the app fails to load:
+1. Check that `app.py` is in the root directory
+2. Verify `requirements.txt` has all dependencies
+3. Ensure environment variable is set correctly
 
----
+### If search doesn't work:
+1. Verify documents are in `data/extracted_texts/`
+2. Check HuggingFace API key is valid
+3. Wait for initial document loading to complete
 
-## 📋 **Files Structure**
-```
-nhai-rag-system/
-├── app.py                 # Main Streamlit app
-├── requirements.txt       # Dependencies
-└── README.md             # Documentation
-```
-
-## 🎯 **Demo Features**
-- ✅ TF-IDF search with relevance scores
-- ✅ AI-generated answers using HuggingFace
-- ✅ Professional interface
-- ✅ Sample NHAI documents included
-- ✅ Works immediately after deployment
-
-## 🌍 **Public Access**
-Once deployed, anyone can access your app using the provided URL!
-
----
-
-## 🚀 **Quick Start Commands**
-
-```bash
-# Test locally first
-streamlit run app.py
-
-# Deploy to Streamlit Cloud
-# Just upload to GitHub and connect to Streamlit Cloud
-```
-
-**Your app will be publicly accessible for 2-3 days or longer!** 🎉 
+## Support:
+- **GitHub Issues**: Report problems in your repository
+- **Streamlit Community**: https://discuss.streamlit.io/
+- **Documentation**: https://docs.streamlit.io/ 
